@@ -1,136 +1,75 @@
 Overview
-
-This project is my full-stack implementation of the TruEstate – Retail Sales Management System assignment.
-The solution includes a Node.js + Express backend and a React (Vite) frontend.
-The application supports:
-
-Search
-
-Multi-select filtering
-
-Sorting
-
-Server-side pagination
-
-These features are applied on a dataset of retail sales transactions to produce fast and accurate results.
+This project is my full-stack solution for the TruEstate Retail Sales Management System assignment.
+It contains a Node.js and Express backend and a React (Vite) frontend.
+The system includes search, multi-select filters, sorting, and server-side pagination for sales transaction data.
 
 Tech Stack
-Backend
+Backend: Node.js, Express, lowdb, CORS
+Frontend: React (Vite), React Router, Axios, Tailwind CSS (optional)
+Tools: npm
 
-Node.js
+Search
+The backend provides an API endpoint (/api/transactions) that supports:
 
-Express
+q → text search on customer name and phone
 
-lowdb (lightweight JSON database)
+filters → JSON object for filters
 
-CORS
+sortBy → field name
 
-Frontend
+sortDir → asc or desc
 
-React (Vite)
+page → page number
 
-React Router
+pageSize → number of results
+Search is case-insensitive and works along with filters and sorting.
 
-Axios
+Filters
+Supports multiple filters such as:
 
-Tailwind CSS (optional)
+customer region
 
-Tools
+gender
 
-npm
+product category
 
-JavaScript (ES modules)
+tags
 
-Search Implementation
+payment method
 
-The backend exposes an endpoint:
+age range
 
-GET /api/transactions
+date range
+All filters are applied on the backend.
 
+Sorting
+Sorting supports:
 
-It accepts several query parameters:
+date (newest first)
 
-q – text search on customer name and phone
+quantity
 
-filters – JSON-encoded filter object
+customer name (A to Z)
+Sorting respects active search and filters.
 
-sortBy – field to sort
-
-sortDir – asc/desc
-
-page – page number
-
-pageSize – number of items per page
-
-Search is case-insensitive and works along with filters, sorting, and pagination.
-
-Filter Implementation
-
-The system supports multiple types of filters:
-
-Customer region
-
-Gender
-
-Product category
-
-Tags (array-based filter)
-
-Payment method
-
-Age range
-
-Date range
-
-All filters are handled on the server side, ensuring consistent results regardless of dataset size.
-
-Sorting Implementation
-
-Sorting can be applied on:
-
-Date (latest first)
-
-Quantity
-
-Customer name (A → Z)
-
-Sorting respects the currently active search and filters.
-
-Pagination Implementation
-
-Pagination is fully server-side:
-
-Default pageSize = 10
-
-The API returns:
-
-Total number of matching records
-
-Current page
-
-Total pages
-
-Data for the current page
+Pagination
+Server-side pagination is used.
+Default page size is 10.
+The API returns total results, total pages, current page number, and data for that page.
 
 How to Run
-Backend
+
+Backend:
 cd backend
 npm install
 npm run start
 
-Frontend
-
-Open another terminal:
-
+Frontend:
 cd frontend
 npm install
 npm run dev
 
-Notes
-
-Backend automatically generates a sample dataset the first time it runs (data/db.json).
-
-You can replace the data with the CSV provided in the assignment if needed.
-
-The frontend runs at:
-http://localhost:5173
+Open the frontend at http://localhost:5173
+.
+The backend creates a sample dataset on first run (data/db.json).
+You can replace it with the dataset provided in the assignment.
