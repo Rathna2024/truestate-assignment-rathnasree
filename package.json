@@ -1,0 +1,8 @@
+{
+  "name": "truestate-monorepo",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ]
+}
